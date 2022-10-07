@@ -1,7 +1,7 @@
-provider "null" {
-
+resource "random_pet" "test" {
+  keepers = {
+    keeper = "${var.user_var}"
+  }
 }
 
-resource "null_resource" "test" {
-
-}
+variable "user_var" {}
