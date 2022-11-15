@@ -1,8 +1,3 @@
-resource "random_pet" "test" {
-  keepers = {
-    keeper = "${var.user_var}"
-  }
+resource "null_resource" "resourceHello" {
   #count = 2000
 }
-
-variable "user_var" {}
