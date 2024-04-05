@@ -1,3 +1,6 @@
-resource "null_resource" "resourceHello" {
-  #count = 2000
+resource "null_resource" "test" {
+  count = 1
+  triggers = {
+    trigger = timestamp()
+  }
 }
