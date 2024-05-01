@@ -1,3 +1,52 @@
+
+terraform {
+  required_providers {
+    datadog = {
+      source = "DataDog/datadog"
+      version = "3.9.0"
+    }
+  }
+}
+
+
+#Configure the Datadog provider
+provider "datadog" {
+  api_key = var.datadog_api_key
+  app_key = var.datadog_app_key
+}
+variable "datadog_api_key" {
+default = "value"
+}
+variable "datadog_app_key" {
+default = "value"
+}
+
+
+resource "datadog_logs_custom_pipeline" "sample_pipeline2" {
+  filter {
+    query = "source:foo"
+  }
+  name       = "sample pipeline"
+  is_enabled = true
+  processor {
+    grok_parser {
+      samples = [<<EOT
+hello
+world
+EOT
+] # add some multi-line strings here
+      source  = "message"
+      grok {
+        support_rules = ""
+        match_rules   = "Rule %%{word:my_word2} %%{number:my_float2}"
+      }
+      name       = "sample grok parser"
+      is_enabled = true
+    }
+  }
+}
+
+/*
 resource "null_resource" "test" {
   count = 1
   triggers = {
@@ -37,3 +86,4 @@ variable "magic_animals" {
     }
   ]
 }
+*/
