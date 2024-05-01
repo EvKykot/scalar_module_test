@@ -4,3 +4,7 @@ resource "null_resource" "test" {
     trigger = timestamp()
   }
 }
+
+variable "magic_animals_list" {
+  default = ["unicorn", "dragon", "phoenix", "griffin", "thestral", "cat"]
+}
