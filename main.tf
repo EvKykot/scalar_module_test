@@ -15,10 +15,10 @@ provider "datadog" {
   app_key = var.datadog_app_key
 }
 variable "datadog_api_key" {
-default = "value"
+default = "01e3861f4019630feaebd43e298876d447f42cd8"
 }
 variable "datadog_app_key" {
-default = "value"
+default = "2dbba2f30e17ef01a8dee04583e0a4f9"
 }
 
 
